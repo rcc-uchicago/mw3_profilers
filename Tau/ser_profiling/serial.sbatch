@@ -11,5 +11,11 @@
 
 #module load python
 #for n in {1..3}; do time python word_manifold.py english.txt 10 100 $n; done
+module load tau/2.31
+cp $TAU_HOME/bin/tau_cxx.sh .
+export CC=tau_cc.sh CXX=tau_cxx.sh F90=tau_f90.sh
+export TAU_MAKEFILE=/software/tau-2.31-el8-x86_64/lib/Makefile.tau-mpi-pdt-openmp rm *.o
+tau_cxx.sh mandelbrot-serial.cc
+
 
 time ./a.out
